@@ -1,0 +1,23 @@
+// Estilos específicos para el componente Home
+// Máximo 3 colores como se especifica en los requisitos
+
+:host {
+  --primary-color: #2563eb;
+  --secondary-color: #64748b;
+  --accent-color: #f59e0b;
+}
+
+.p-card {
+  transition: transform 0.2s ease-in-out;
+  
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.p-accordion {
+  .p-accordion-header {
+    background-color: var(--primary-color);
+    color: white;
+  }
+}
