@@ -1,0 +1,54 @@
+<div class="p-3">
+  <!-- Header con logo y búsqueda -->
+  <div class="flex align-items-center justify-content-between mb-2">
+    <p-image src="https://s3-us-west-2.amazonaws.com/wp-mpro-blog/wp-content/uploads/2016/03/14133959/s3-blog-tecnologia-como-prioridad-min.png" alt="Logo" width="60"></p-image>
+
+    <div class="flex align-items-center gap-2">
+      <span class="p-input-icon-left">
+        <i class="pi pi-search"></i>
+        <input pInputText type="text" placeholder="Over Label" />
+      </span>
+      <button pButton type="button" label="Submit" class="p-button-warning"></button>
+    </div>
+  </div>
+
+  <!-- Menú de navegación en español -->
+  <p-menubar [model]="menuItems" class="mb-3"></p-menubar>
+
+  <!-- Imagen principal -->
+  <div class="my-3 text-center">
+    <p-image src="https://s3-us-west-2.amazonaws.com/wp-mpro-blog/wp-content/uploads/2016/03/14133959/s3-blog-tecnologia-como-prioridad-min.png" alt="Hero" [preview]="true" styleClass="w-50" />
+  </div>
+
+  <!-- Cards de servicios -->
+  <div class="grid">
+    <div class="col-12 md:col-4" *ngFor="let s of services">
+      <p-card [header]="s.title" [subheader]="s.subtitle" styleClass="h-full">
+        <ng-template pTemplate="header">
+          <p-image [src]="s.image" alt="{{s.title}}" width="100%" height="200"></p-image>
+        </ng-template>
+        <p>{{ s.description }}</p>
+        <ng-template pTemplate="footer">
+          <button pButton label="Conocer más +" class="p-button-sm"></button>
+        </ng-template>
+      </p-card>
+    </div>
+  </div>
+
+  <!-- Accordion con servicios -->
+  <div class="card flex justify-center mt-4">
+    <p-accordion value="0">
+      <p-accordion-panel *ngFor="let s of services; let i = index" [value]="i">
+        <p-accordion-header>{{ s.title }}</p-accordion-header>
+        <p-accordion-content>
+          <p class="m-0">
+            {{ s.description }}
+          </p>
+        </p-accordion-content>
+      </p-accordion-panel>
+    </p-accordion>
+  </div>
+
+  <!-- Footer -->
+  <div class="text-center mt-5 mb-3">Diseñado por: AngieGalindez - DeisyMartinez</div>
+</div>

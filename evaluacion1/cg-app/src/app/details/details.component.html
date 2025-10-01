@@ -1,0 +1,63 @@
+<p-toast />
+<div class="p-3">
+  <!-- Header con logo -->
+  <div class="flex align-items-center justify-content-between mb-3">
+    <p-image src="https://s3-us-west-2.amazonaws.com/wp-mpro-blog/wp-content/uploads/2016/03/14133959/s3-blog-tecnologia-como-prioridad-min.png" alt="Logo" width="80"></p-image>
+  </div>
+
+  <!-- Menú de navegación -->
+  <p-menubar [model]="menuItems" class="mb-4"></p-menubar>
+
+  <!-- Imagen principal -->
+  <div class="my-3 text-center">
+    <p-image src="https://s3-us-west-2.amazonaws.com/wp-mpro-blog/wp-content/uploads/2016/03/14133959/s3-blog-tecnologia-como-prioridad-min.png" alt="Main Image" [preview]="true" styleClass="w-75" />
+  </div>
+
+  <!-- Botones con animaciones -->
+  <div class="flex flex-wrap gap-2 justify-content-center p-3">
+    <button pButton 
+            label="Success" 
+            (click)="show('success')" 
+            class="p-button-success p-button-raised"
+            [style.animation]="buttonAnimation">
+    </button>
+    <button pButton 
+            label="Info" 
+            severity="info" 
+            (click)="show('info')" 
+            class="p-button-info p-button-raised"
+            [style.animation]="buttonAnimation">
+    </button>
+    <button pButton 
+            label="Warn" 
+            severity="warn" 
+            (click)="show('warn')" 
+            class="p-button-warning p-button-raised"
+            [style.animation]="buttonAnimation">
+    </button>
+    <button pButton 
+            label="Error" 
+            severity="danger" 
+            (click)="show('error')" 
+            class="p-button-danger p-button-raised"
+            [style.animation]="buttonAnimation">
+    </button>
+    <button pButton 
+            label="Secondary" 
+            severity="secondary" 
+            (click)="show('secondary')" 
+            class="p-button-secondary p-button-raised"
+            [style.animation]="buttonAnimation">
+    </button>
+    <button pButton 
+            label="Contrast" 
+            severity="contrast" 
+            (click)="show('contrast')" 
+            class="p-button-help p-button-raised"
+            [style.animation]="buttonAnimation">
+    </button>
+  </div>
+
+  <!-- Footer -->
+  <div class="text-center mt-5 mb-3">Diseñado por: AngieGalindez - DeisyMartinez</div>
+</div>

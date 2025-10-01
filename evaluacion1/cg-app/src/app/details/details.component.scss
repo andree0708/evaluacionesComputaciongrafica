@@ -1,0 +1,26 @@
+// Estilos específicos para el componente Details
+// Máximo 3 colores como se especifica en los requisitos
+
+:host {
+  --primary-color: #2563eb;
+  --secondary-color: #64748b;
+  --accent-color: #f59e0b;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.p-button:hover {
+  animation: pulse 0.3s ease-in-out;
+}
+
+.p-button-raised {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  
+  &:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+}
