@@ -1,0 +1,43 @@
+<div class="servicios-container">
+  <!-- Sección de Servicios Adicionales -->
+  <div class="servicios-section">
+    <h1 class="section-title">Servicios Adicionales</h1>
+    <p class="section-subtitle">Aprovecha nuestros excelentes servicios durante tu estancia.</p>
+    <p-button label="Ver Servicios" routerLink="/reserva" styleClass="view-services-button"></p-button>
+
+    <div class="servicios-grid">
+      <p-card *ngFor="let servicio of servicios" class="servicio-card">
+        <div class="servicio-content">
+          <div class="servicio-image"></div>
+          <div class="servicio-text">
+            <h3 class="servicio-titulo">{{ servicio.titulo }}</h3>
+            <p class="servicio-descripcion">{{ servicio.descripcion }}</p>
+          </div>
+        </div>
+      </p-card>
+    </div>
+  </div>
+
+  <!-- Sección de Testimonios -->
+  <div class="testimonios-section">
+    <div class="testimonios-header">
+      <h1 class="section-title">Lo que dicen nuestros huéspedes</h1>
+      <p class="section-subtitle">Lee las opiniones de aquellos que se han alojado con nosotros.</p>
+    </div>
+
+    <div class="testimonios-grid">
+      <p-card *ngFor="let testimonio of testimonios" class="testimonio-card">
+        <div class="testimonio-content">
+          <div class="testimonio-header">
+            <div class="testimonio-avatar"></div>
+            <div class="testimonio-info">
+              <h4 class="testimonio-nombre">{{ testimonio.nombre }}</h4>
+              <p-rating [(ngModel)]="testimonio.rating" [readonly]="true"></p-rating>
+            </div>
+          </div>
+          <p class="testimonio-comentario">{{ testimonio.comentario }}</p>
+        </div>
+      </p-card>
+    </div>
+  </div>
+</div>

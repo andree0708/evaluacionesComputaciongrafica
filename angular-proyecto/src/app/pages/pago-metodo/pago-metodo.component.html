@@ -1,0 +1,37 @@
+<div class="pago-metodo-container">
+  <p-toast></p-toast>
+  <div class="pago-metodo-content">
+    <div class="pago-metodo-header">
+      <h1 class="pago-metodo-title">Selección de Método de Pago</h1>
+    </div>
+
+    <div class="metodo-section">
+      <h2 class="metodo-label">Método de Pago</h2>
+      <div class="metodos-grid">
+        <button 
+          *ngFor="let metodo of metodosPago" 
+          class="metodo-button"
+          [class.selected]="metodoSeleccionado === metodo.nombre"
+          (click)="seleccionarMetodo(metodo.nombre)"
+        >
+          <i [class]="metodo.icono"></i>
+          {{ metodo.nombre }}
+        </button>
+      </div>
+      <p class="metodo-hint">Selecciona una opción</p>
+
+      <p-button 
+        label="Proceder con el Pago" 
+        (onClick)="procederPago()"
+        [disabled]="!metodoSeleccionado"
+        styleClass="proceed-button"
+      ></p-button>
+    </div>
+
+    <div class="footer-info">
+      <p><strong>Contacto:</strong> info&#64;hotel.com</p>
+      <p><strong>Teléfono:</strong> +57 123 456 789</p>
+      <p><strong>Síguenos en redes sociales</strong></p>
+    </div>
+  </div>
+</div>

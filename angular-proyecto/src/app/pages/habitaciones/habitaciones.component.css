@@ -1,0 +1,110 @@
+.habitaciones-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header-section {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.main-title {
+  color: var(--cafe-oscuro);
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  color: var(--cafe-oscuro);
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.rooms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.room-card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.room-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.room-image {
+  position: relative;
+  height: 200px;
+  background: var(--gris-claro);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.room-tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.room-placeholder {
+  color: #999;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.room-content {
+  padding: 1.5rem;
+}
+
+.room-title {
+  color: var(--cafe-oscuro);
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.room-description {
+  color: var(--cafe-oscuro);
+  font-weight: bold;
+  margin: 0;
+}
+
+::ng-deep .reserve-button {
+  background-color: var(--cafe-oscuro) !important;
+  border-color: var(--cafe-oscuro) !important;
+  color: white !important;
+}
+
+::ng-deep .reserve-room-button {
+  width: 100%;
+  background-color: var(--cafe-oscuro) !important;
+  border-color: var(--cafe-oscuro) !important;
+  color: white !important;
+}
+
+::ng-deep .reserve-room-button:hover {
+  background-color: var(--cafe-claro) !important;
+  border-color: var(--cafe-claro) !important;
+}
+
+@media (max-width: 768px) {
+  .rooms-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .main-title {
+    font-size: 2rem;
+  }
+}
+
+

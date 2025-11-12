@@ -1,0 +1,49 @@
+/* You can add global styles to this file, and also import other style files */
+@import "primeicons/primeicons.css";
+
+/* Paleta de colores tropical */
+:root {
+  --verde-tropical: #4a7c59;
+  --cafe-claro: #d4a574;
+  --cafe-oscuro: #8b6f47;
+  --verde-claro: #a8d5ba;
+  --blanco: #ffffff;
+  --gris-claro: #f5f5f5;
+  --gris-oscuro: #333333;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--gris-claro);
+  color: var(--cafe-oscuro);
+}
+
+/* Estilos para botones de PrimeNG */
+.p-button {
+  background-color: var(--cafe-oscuro) !important;
+  border-color: var(--cafe-oscuro) !important;
+  color: var(--blanco) !important;
+}
+
+.p-button:hover {
+  background-color: var(--cafe-claro) !important;
+  border-color: var(--cafe-claro) !important;
+}
+
+.p-button-outlined {
+  background-color: transparent !important;
+  border-color: var(--cafe-oscuro) !important;
+  color: var(--cafe-oscuro) !important;
+}
+
+.p-button-outlined:hover {
+  background-color: var(--cafe-claro) !important;
+  border-color: var(--cafe-claro) !important;
+  color: var(--blanco) !important;
+}

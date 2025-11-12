@@ -1,0 +1,126 @@
+.pago-metodo-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.pago-metodo-content {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.pago-metodo-header {
+  padding-top: 1rem;
+}
+
+.pago-metodo-title {
+  color: var(--cafe-oscuro);
+  font-size: 2.5rem;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.metodo-section {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.metodo-label {
+  color: var(--cafe-oscuro);
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.metodos-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.metodo-button {
+  padding: 1rem;
+  background: var(--gris-claro);
+  border: 2px solid transparent;
+  border-radius: 8px;
+  color: var(--cafe-oscuro);
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.metodo-button:hover {
+  background: var(--cafe-claro);
+  border-color: var(--cafe-oscuro);
+}
+
+.metodo-button.selected {
+  background: var(--verde-claro);
+  border-color: var(--verde-tropical);
+  color: var(--cafe-oscuro);
+}
+
+.metodo-button i {
+  font-size: 1.5rem;
+}
+
+.metodo-hint {
+  color: var(--cafe-oscuro);
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+}
+
+.proceed-button {
+  width: 100%;
+  background-color: var(--cafe-oscuro) !important;
+  border-color: var(--cafe-oscuro) !important;
+  color: white !important;
+  padding: 0.75rem;
+  font-size: 1.1rem;
+}
+
+.proceed-button:hover:not(:disabled) {
+  background-color: var(--cafe-claro) !important;
+  border-color: var(--cafe-claro) !important;
+}
+
+.footer-info {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--cafe-oscuro);
+  padding: 2rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-top: 2rem;
+}
+
+.footer-info p {
+  margin: 0.5rem 0;
+}
+
+@media (max-width: 768px) {
+  .pago-metodo-content {
+    grid-template-columns: 1fr;
+  }
+
+  .metodos-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pago-metodo-title {
+    font-size: 2rem;
+  }
+}
+
+

@@ -1,0 +1,152 @@
+.servicios-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.servicios-section {
+  margin-bottom: 4rem;
+}
+
+.section-title {
+  color: var(--cafe-oscuro);
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  color: var(--cafe-oscuro);
+  font-size: 1.1rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.servicios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.servicio-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.servicio-content {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.servicio-image {
+  width: 100px;
+  height: 100px;
+  background: var(--gris-claro);
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.servicio-text {
+  flex: 1;
+}
+
+.servicio-titulo {
+  color: var(--cafe-oscuro);
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.servicio-descripcion {
+  color: var(--cafe-oscuro);
+  margin: 0;
+}
+
+.testimonios-section {
+  margin-top: 4rem;
+}
+
+.testimonios-header {
+  margin-bottom: 2rem;
+}
+
+.testimonios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.testimonio-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.testimonio-content {
+  padding: 1rem;
+}
+
+.testimonio-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.testimonio-avatar {
+  width: 50px;
+  height: 50px;
+  background: var(--gris-claro);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.testimonio-info {
+  flex: 1;
+}
+
+.testimonio-nombre {
+  color: var(--cafe-oscuro);
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: 0 0 0.5rem 0;
+}
+
+.testimonio-comentario {
+  color: var(--cafe-oscuro);
+  margin: 0;
+  line-height: 1.6;
+}
+
+::ng-deep .view-services-button {
+  background-color: var(--cafe-oscuro) !important;
+  border-color: var(--cafe-oscuro) !important;
+  color: white !important;
+  display: block;
+  margin: 0 auto;
+}
+
+::ng-deep .p-rating .p-rating-icon {
+  color: #fbbf24 !important;
+}
+
+@media (max-width: 768px) {
+  .servicios-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .servicio-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+}
+
+

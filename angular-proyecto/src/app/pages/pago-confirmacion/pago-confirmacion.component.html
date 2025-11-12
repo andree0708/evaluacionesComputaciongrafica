@@ -1,0 +1,64 @@
+<div class="pago-container">
+  <div class="pago-header">
+    <h1 class="pago-title">Detalles de Pago</h1>
+    <p class="pago-subtitle">Por favor, confirma tus datos y selecciona tu método de pago.</p>
+    <div class="pago-buttons">
+      <p-button label="Cancelar" routerLink="/reserva" [outlined]="true" styleClass="cancel-button"></p-button>
+      <p-button label="Continuar" routerLink="/pago-metodo" styleClass="continue-button"></p-button>
+    </div>
+  </div>
+
+  <div class="confirmacion-section">
+    <div class="confirmacion-header">
+      <h2 class="confirmacion-title">Confirma Tus Datos</h2>
+      <p class="confirmacion-subtitle">Revisa la información antes de proceder.</p>
+    </div>
+
+    <p-card class="confirmacion-card">
+      <form class="confirmacion-form">
+        <div class="form-group">
+          <label for="nombre" class="form-label">Nombre</label>
+          <input 
+            pInputText 
+            id="nombre" 
+            [(ngModel)]="nombre" 
+            name="nombre"
+            placeholder="Ingresa tu nombre completo"
+            class="form-input"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="correo" class="form-label">Correo Electrónico</label>
+          <input 
+            pInputText 
+            id="correo" 
+            type="email"
+            [(ngModel)]="correo" 
+            name="correo"
+            placeholder="ejemplo@correo.com"
+            class="form-input"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="telefono" class="form-label">Número de Teléfono</label>
+          <input 
+            pInputText 
+            id="telefono" 
+            [(ngModel)]="telefono" 
+            name="telefono"
+            placeholder="Ingresa tu número de teléfono"
+            class="form-input"
+          />
+        </div>
+
+        <p-button 
+          label="Confirmar" 
+          (onClick)="confirmar()"
+          styleClass="confirm-button"
+        ></p-button>
+      </form>
+    </p-card>
+  </div>
+</div>

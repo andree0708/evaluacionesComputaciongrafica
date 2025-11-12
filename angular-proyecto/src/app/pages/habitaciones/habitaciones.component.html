@@ -1,0 +1,25 @@
+<div class="habitaciones-container">
+  <div class="header-section">
+    <h1 class="main-title">Nuestras Habitaciones</h1>
+    <p class="subtitle">Explora nuestras opciones de habitaciones disponibles.</p>
+    <p-button label="Reservar Ahora" routerLink="/reserva" styleClass="reserve-button"></p-button>
+  </div>
+
+  <div class="rooms-grid">
+    <p-card *ngFor="let habitacion of habitaciones" class="room-card">
+      <ng-template pTemplate="header">
+        <div class="room-image">
+          <p-tag [value]="habitacion.tag" [severity]="habitacion.tagSeverity" class="room-tag"></p-tag>
+          <div class="room-placeholder">{{ habitacion.nombre }}</div>
+        </div>
+      </ng-template>
+      <div class="room-content">
+        <h3 class="room-title">{{ habitacion.nombre }}</h3>
+        <p class="room-description">{{ habitacion.descripcion }}</p>
+      </div>
+      <ng-template pTemplate="footer">
+        <p-button label="Reservar" (onClick)="reservar(habitacion.id)" styleClass="reserve-room-button"></p-button>
+      </ng-template>
+    </p-card>
+  </div>
+</div>

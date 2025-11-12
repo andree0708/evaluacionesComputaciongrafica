@@ -1,0 +1,57 @@
+<div class="reserva-container">
+  <div class="reserva-content">
+    <div class="reserva-header">
+      <h1 class="reserva-title">Reserva tu habitación</h1>
+      <p class="reserva-subtitle">Completa el formulario para asegurarte la mejor habitación.</p>
+    </div>
+
+    <p-card class="reserva-card">
+      <form class="reserva-form">
+        <div class="form-group">
+          <label for="nombre" class="form-label">Nombre Completo</label>
+          <input 
+            pInputText 
+            id="nombre" 
+            [(ngModel)]="nombreCompleto" 
+            name="nombre"
+            placeholder="Ingresa tu nombre"
+            class="form-input"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Fechas de Estancia</label>
+          <div class="date-inputs">
+            <input 
+              type="date" 
+              [(ngModel)]="fechaEntrada" 
+              name="fechaEntrada"
+              placeholder="Fecha de entrada"
+              class="date-input form-input"
+            />
+            <input 
+              type="date" 
+              [(ngModel)]="fechaSalida" 
+              name="fechaSalida"
+              placeholder="Fecha de salida"
+              class="date-input form-input"
+            />
+          </div>
+          <p class="date-hint">Selecciona las fechas que deseas reservar</p>
+        </div>
+
+        <p-button 
+          label="Enviar Reserva" 
+          (onClick)="enviarReserva()"
+          styleClass="submit-button"
+        ></p-button>
+      </form>
+    </p-card>
+
+    <div class="footer-info">
+      <p><strong>Dirección:</strong> Calle Ficticia 123, La Ciudad</p>
+      <p><strong>Teléfono:</strong> +34 600 123 456</p>
+      <p><strong>Síguenos en nuestras redes sociales</strong></p>
+    </div>
+  </div>
+</div>

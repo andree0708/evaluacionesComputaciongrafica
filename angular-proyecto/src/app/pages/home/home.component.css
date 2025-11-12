@@ -1,0 +1,76 @@
+.home-container {
+  width: 100%;
+}
+
+.banner-section {
+  background: linear-gradient(135deg, var(--cafe-oscuro) 0%, var(--verde-tropical) 100%);
+  padding: 6rem 4rem;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.banner-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.banner-title {
+  color: white;
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.banner-description {
+  color: white;
+  font-size: 1.25rem;
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+.banner-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+::ng-deep .contact-button {
+  background-color: transparent !important;
+  border: 2px solid white !important;
+  color: white !important;
+}
+
+::ng-deep .contact-button:hover {
+  background-color: white !important;
+  color: var(--cafe-oscuro) !important;
+}
+
+::ng-deep .rooms-button {
+  background-color: var(--cafe-oscuro) !important;
+  border-color: var(--cafe-oscuro) !important;
+  color: white !important;
+}
+
+::ng-deep .rooms-button:hover {
+  background-color: var(--cafe-claro) !important;
+  border-color: var(--cafe-claro) !important;
+}
+
+@media (max-width: 768px) {
+  .banner-section {
+    padding: 4rem 2rem;
+  }
+
+  .banner-title {
+    font-size: 2rem;
+  }
+
+  .banner-description {
+    font-size: 1rem;
+  }
+}
+
+
