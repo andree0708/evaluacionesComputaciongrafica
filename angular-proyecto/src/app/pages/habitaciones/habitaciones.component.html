@@ -2,24 +2,43 @@
   <div class="header-section">
     <h1 class="main-title">Nuestras Habitaciones</h1>
     <p class="subtitle">Explora nuestras opciones de habitaciones disponibles.</p>
-    <p-button label="Reservar Ahora" routerLink="/reserva" styleClass="reserve-button"></p-button>
   </div>
 
   <div class="rooms-grid">
     <p-card *ngFor="let habitacion of habitaciones" class="room-card">
       <ng-template pTemplate="header">
-        <div class="room-image">
+        <div class="room-image" [style.background-image]="habitacion.imagenUrl ? 'url(' + habitacion.imagenUrl + ')' : 'none'">
           <p-tag [value]="habitacion.tag" [severity]="habitacion.tagSeverity" class="room-tag"></p-tag>
-          <div class="room-placeholder">{{ habitacion.nombre }}</div>
+          <div class="room-placeholder" *ngIf="!habitacion.imagenUrl">{{ habitacion.nombre }}</div>
         </div>
       </ng-template>
       <div class="room-content">
         <h3 class="room-title">{{ habitacion.nombre }}</h3>
         <p class="room-description">{{ habitacion.descripcion }}</p>
+        <p class="room-price">Desde ${{ habitacion.precio | number:'1.2-2' }} / noche</p>
       </div>
       <ng-template pTemplate="footer">
-        <p-button label="Reservar" (onClick)="reservar(habitacion.id)" styleClass="reserve-room-button"></p-button>
+        <div class="room-actions">
+          <p-button label="Ver detalles" (onClick)="verDetalles(habitacion)" styleClass="details-button" [text]="true"></p-button>
+          <p-button label="Reservar" (onClick)="reservar(habitacion.id)" styleClass="reserve-room-button"></p-button>
+        </div>
       </ng-template>
     </p-card>
   </div>
+
+  <p-dialog [(visible)]="detalleVisible" [modal]="true" [style]="{width: '450px'}" header="{{ habitacionSeleccionada?.nombre || 'Detalles de la habitación' }}">
+    <div *ngIf="habitacionSeleccionada" class="detalle-content">
+      <p class="detalle-descripcion">{{ habitacionSeleccionada.descripcion }}</p>
+      <p class="detalle-precio">
+        <strong>Precio por noche:</strong> ${{ habitacionSeleccionada.precio | number:'1.2-2' }}
+      </p>
+      <p class="detalle-capacidad">
+        <strong>Capacidad:</strong> {{ habitacionSeleccionada.capacidad }}
+      </p>
+    </div>
+    <ng-template pTemplate="footer">
+      <p-button label="Cerrar" (onClick)="detalleVisible = false" [text]="true"></p-button>
+      <p-button label="Reservar" (onClick)="reservar(habitacionSeleccionada.id)" styleClass="reserve-room-button"></p-button>
+    </ng-template>
+  </p-dialog>
 </div>

@@ -6,9 +6,34 @@
         Elige tu habitación ideal en nuestro hotel con un ambiente acogedor y servicios incomparables.
       </p>
       <div class="banner-buttons">
-        <p-button label="Contáctanos" routerLink="/servicios" [outlined]="true" styleClass="contact-button"></p-button>
+        <p-button label="Contáctanos" routerLink="/contacto" [outlined]="true" styleClass="contact-button"></p-button>
         <p-button label="Ver Habitaciones" routerLink="/habitaciones" styleClass="rooms-button"></p-button>
       </div>
+    </div>
+  </div>
+
+  <!-- Sección de Opiniones -->
+  <div class="testimonios-section">
+    <div class="testimonios-header">
+      <h2 class="section-title">Lo que dicen nuestros huéspedes</h2>
+      <p class="section-subtitle">Lee las opiniones de aquellos que se han alojado con nosotros</p>
+    </div>
+
+    <div class="testimonios-grid">
+      <p-card *ngFor="let testimonio of testimonios" class="testimonio-card">
+        <div class="testimonio-content">
+          <div class="testimonio-header">
+            <div class="testimonio-avatar">
+              <i class="pi pi-user"></i>
+            </div>
+            <div class="testimonio-info">
+              <h4 class="testimonio-nombre">{{ testimonio.nombre }}</h4>
+              <p-rating [(ngModel)]="testimonio.rating" [readonly]="true"></p-rating>
+            </div>
+          </div>
+          <p class="testimonio-comentario">{{ testimonio.comentario }}</p>
+        </div>
+      </p-card>
     </div>
   </div>
 </div>

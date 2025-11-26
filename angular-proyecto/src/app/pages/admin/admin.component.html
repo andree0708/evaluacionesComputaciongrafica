@@ -1,0 +1,249 @@
+<div class="admin-container">
+  <p-toast></p-toast>
+  <p-confirmDialog></p-confirmDialog>
+
+  <div class="admin-header">
+    <h1 class="admin-title">Panel de Administración</h1>
+    <div class="admin-actions">
+      <a routerLink="/" class="admin-link">Ver sitio público</a>
+      <span class="user-info">Bienvenido, {{ user?.nombre }}</span>
+      <p-button label="Cerrar Sesión" (onClick)="logout()" [outlined]="true" styleClass="logout-button"></p-button>
+    </div>
+  </div>
+
+  <p-card class="admin-card">
+    <p-tabView [(activeIndex)]="activeTabIndex">
+      <!-- Tab de Reservas -->
+      <p-tabPanel header="Reservas">
+    <div class="table-container">
+      <p-table [value]="reservas" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[10, 20, 50]">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>ID</th>
+            <th>Cliente</th>
+            <th>Email</th>
+            <th>Habitación</th>
+            <th>Fecha Entrada</th>
+            <th>Fecha Salida</th>
+            <th>Total</th>
+            <th>Estado</th>
+            <th>Método Pago</th>
+            <th>Acciones</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-reserva>
+          <tr>
+            <td>{{ reserva.id }}</td>
+            <td>{{ reserva.nombreCompleto }}</td>
+            <td>{{ reserva.email }}</td>
+            <td>{{ reserva.habitacion?.nombre || 'N/A' }}</td>
+            <td>{{ reserva.fechaEntrada | date:'dd/MM/yyyy' }}</td>
+            <td>{{ reserva.fechaSalida | date:'dd/MM/yyyy' }}</td>
+            <td>${{ reserva.total | number:'1.2-2' }}</td>
+            <td>
+              <p-tag [value]="reserva.estado" [severity]="getSeverity(reserva.estado)"></p-tag>
+            </td>
+            <td>{{ reserva.metodoPago || 'N/A' }}</td>
+            <td>
+              <p-button 
+                icon="pi pi-pencil" 
+                [rounded]="true" 
+                [text]="true"
+                (onClick)="editarReserva(reserva)"
+                styleClass="edit-button"
+              ></p-button>
+              <p-button 
+                icon="pi pi-trash" 
+                [rounded]="true" 
+                [text]="true"
+                severity="danger"
+                (onClick)="eliminarReserva(reserva)"
+              ></p-button>
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td colspan="10" class="text-center">No hay reservas registradas</td>
+          </tr>
+        </ng-template>
+      </p-table>
+      </div>
+      </p-tabPanel>
+
+      <!-- Tab de Habitaciones -->
+      <p-tabPanel header="Habitaciones">
+        <div class="habitaciones-header">
+          <p-button label="Nueva Habitación" icon="pi pi-plus" (onClick)="nuevaHabitacionClick()" styleClass="new-button"></p-button>
+        </div>
+        <div class="table-container">
+          <p-table [value]="habitaciones" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[10, 20, 50]">
+            <ng-template pTemplate="header">
+              <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Precio</th>
+                <th>Capacidad</th>
+                <th>Disponible</th>
+                <th>Acciones</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-habitacion>
+              <tr>
+                <td>{{ habitacion.id }}</td>
+                <td>{{ habitacion.nombre }}</td>
+                <td>{{ habitacion.tipo }}</td>
+                <td>${{ habitacion.precio | number:'1.2-2' }}</td>
+                <td>{{ habitacion.capacidad }}</td>
+                <td>
+                  <p-tag [value]="habitacion.disponible ? 'Disponible' : 'No disponible'" 
+                         [severity]="habitacion.disponible ? 'success' : 'danger'"></p-tag>
+                </td>
+                <td>
+                  <p-button 
+                    icon="pi pi-pencil" 
+                    [rounded]="true" 
+                    [text]="true"
+                    (onClick)="editarHabitacion(habitacion)"
+                    styleClass="edit-button"
+                  ></p-button>
+                  <p-button 
+                    icon="pi pi-trash" 
+                    [rounded]="true" 
+                    [text]="true"
+                    severity="danger"
+                    (onClick)="eliminarHabitacion(habitacion)"
+                  ></p-button>
+                </td>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+              <tr>
+                <td colspan="7" class="text-center">No hay habitaciones registradas</td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      </p-tabPanel>
+    </p-tabView>
+  </p-card>
+
+  <!-- Dialog para editar reserva -->
+  <p-dialog 
+    [(visible)]="mostrarDialog" 
+    [modal]="true" 
+    [style]="{width: '500px'}"
+    header="Editar Reserva"
+  >
+    <div *ngIf="reservaSeleccionada" class="dialog-content">
+      <div class="form-group">
+        <label class="form-label">Estado</label>
+        <p-dropdown 
+          [(ngModel)]="reservaSeleccionada.estado"
+          [options]="['Pendiente', 'Confirmada', 'Cancelada']"
+          placeholder="Selecciona un estado"
+          class="w-full"
+        ></p-dropdown>
+      </div>
+    </div>
+    <ng-template pTemplate="footer">
+      <p-button label="Cancelar" (onClick)="mostrarDialog = false" [text]="true"></p-button>
+      <p-button label="Guardar" (onClick)="guardarReserva()"></p-button>
+    </ng-template>
+  </p-dialog>
+
+  <!-- Dialog para editar habitación -->
+  <p-dialog 
+    [(visible)]="mostrarDialogHabitacion" 
+    [modal]="true" 
+    [style]="{width: '500px'}"
+    header="Editar Habitación"
+  >
+    <div *ngIf="habitacionSeleccionada" class="dialog-content">
+      <div class="form-group">
+        <label class="form-label">Nombre</label>
+        <input pInputText [(ngModel)]="habitacionSeleccionada.nombre" class="w-full" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Descripción</label>
+        <input pInputText [(ngModel)]="habitacionSeleccionada.descripcion" class="w-full" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Tipo</label>
+        <p-dropdown 
+          [(ngModel)]="habitacionSeleccionada.tipo"
+          [options]="['Individual', 'Doble', 'Suite', 'Familiar']"
+          placeholder="Selecciona un tipo"
+          class="w-full"
+        ></p-dropdown>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Precio</label>
+        <p-inputNumber [(ngModel)]="habitacionSeleccionada.precio" [min]="0" [maxFractionDigits]="2" class="w-full"></p-inputNumber>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Capacidad</label>
+        <p-inputNumber [(ngModel)]="habitacionSeleccionada.capacidad" [min]="1" [max]="10" class="w-full"></p-inputNumber>
+      </div>
+      <div class="form-group">
+        <label class="form-label">URL de Imagen</label>
+        <input pInputText [(ngModel)]="habitacionSeleccionada.imagenUrl" class="w-full" />
+      </div>
+      <div class="form-group">
+        <p-checkbox [(ngModel)]="habitacionSeleccionada.disponible" label="Disponible"></p-checkbox>
+      </div>
+    </div>
+    <ng-template pTemplate="footer">
+      <p-button label="Cancelar" (onClick)="mostrarDialogHabitacion = false" [text]="true"></p-button>
+      <p-button label="Guardar" (onClick)="guardarHabitacion()"></p-button>
+    </ng-template>
+  </p-dialog>
+
+  <!-- Dialog para nueva habitación -->
+  <p-dialog 
+    [(visible)]="mostrarDialogNuevaHabitacion" 
+    [modal]="true" 
+    [style]="{width: '500px'}"
+    header="Nueva Habitación"
+  >
+    <div class="dialog-content">
+      <div class="form-group">
+        <label class="form-label">Nombre</label>
+        <input pInputText [(ngModel)]="nuevaHabitacion.nombre" class="w-full" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Descripción</label>
+        <input pInputText [(ngModel)]="nuevaHabitacion.descripcion" class="w-full" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Tipo</label>
+        <p-dropdown 
+          [(ngModel)]="nuevaHabitacion.tipo"
+          [options]="['Individual', 'Doble', 'Suite', 'Familiar']"
+          placeholder="Selecciona un tipo"
+          class="w-full"
+        ></p-dropdown>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Precio</label>
+        <p-inputNumber [(ngModel)]="nuevaHabitacion.precio" [min]="0" [maxFractionDigits]="2" class="w-full"></p-inputNumber>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Capacidad</label>
+        <p-inputNumber [(ngModel)]="nuevaHabitacion.capacidad" [min]="1" [max]="10" class="w-full"></p-inputNumber>
+      </div>
+      <div class="form-group">
+        <label class="form-label">URL de Imagen</label>
+        <input pInputText [(ngModel)]="nuevaHabitacion.imagenUrl" class="w-full" />
+      </div>
+      <div class="form-group">
+        <p-checkbox [(ngModel)]="nuevaHabitacion.disponible" label="Disponible"></p-checkbox>
+      </div>
+    </div>
+    <ng-template pTemplate="footer">
+      <p-button label="Cancelar" (onClick)="mostrarDialogNuevaHabitacion = false" [text]="true"></p-button>
+      <p-button label="Crear" (onClick)="crearHabitacion()"></p-button>
+    </ng-template>
+  </p-dialog>
+</div>

@@ -1,0 +1,52 @@
+<div class="register-container">
+  <p-card class="register-card">
+    <div class="register-content">
+      <h2 class="register-title">Crear Cuenta</h2>
+      <p class="register-subtitle">Regístrate para gestionar tus reservas</p>
+
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-form">
+        <div class="form-group">
+          <label for="nombre" class="form-label">Nombre completo</label>
+          <input pInputText id="nombre" formControlName="nombre" placeholder="Ingresa tu nombre" class="form-input" />
+        </div>
+
+        <div class="form-group">
+          <label for="nombreUsuario" class="form-label">Nombre de usuario</label>
+          <input pInputText id="nombreUsuario" formControlName="nombreUsuario" placeholder="Nombre de usuario" class="form-input" />
+        </div>
+
+        <div class="form-group">
+          <label for="email" class="form-label">Correo electrónico</label>
+          <input pInputText id="email" formControlName="email" placeholder="correo@ejemplo.com" class="form-input" />
+        </div>
+
+        <div class="form-group">
+          <label for="password" class="form-label">Contraseña</label>
+          <p-password 
+            id="password" 
+            formControlName="password"
+            placeholder="Mínimo 6 caracteres"
+            [toggleMask]="true"
+            [feedback]="false"
+            styleClass="w-full"
+            inputStyleClass="form-input"
+          ></p-password>
+        </div>
+
+        <div *ngIf="errorMessage" class="error-container">
+          <p-message severity="error" [text]="errorMessage"></p-message>
+        </div>
+
+        <div *ngIf="successMessage" class="success-container">
+          <p-message severity="success" [text]="successMessage"></p-message>
+        </div>
+
+        <p-button label="Crear cuenta" type="submit" [loading]="loading" [disabled]="registerForm.invalid || loading" styleClass="register-button"></p-button>
+      </form>
+
+      <div class="register-footer">
+        <p>¿Ya tienes cuenta? <a routerLink="/login" class="link">Inicia sesión aquí</a></p>
+      </div>
+    </div>
+  </p-card>
+</div>

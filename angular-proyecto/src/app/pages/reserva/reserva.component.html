@@ -1,4 +1,5 @@
 <div class="reserva-container">
+  <p-toast></p-toast>
   <div class="reserva-content">
     <div class="reserva-header">
       <h1 class="reserva-title">Reserva tu habitación</h1>
@@ -17,6 +18,20 @@
             placeholder="Ingresa tu nombre"
             class="form-input"
           />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Habitación</label>
+          <p-dropdown 
+            [options]="habitaciones" 
+            [(ngModel)]="habitacionSeleccionada"
+            name="habitacion"
+            placeholder="Selecciona una habitación"
+            optionLabel="label"
+            [showClear]="true"
+            class="form-input"
+            styleClass="w-full"
+          ></p-dropdown>
         </div>
 
         <div class="form-group">
@@ -49,8 +64,8 @@
     </p-card>
 
     <div class="footer-info">
-      <p><strong>Dirección:</strong> Calle Ficticia 123, La Ciudad</p>
-      <p><strong>Teléfono:</strong> +34 600 123 456</p>
+      <p><strong>Dirección:</strong> universidad de nariño</p>
+      <p><strong>Teléfono:</strong> +57 3006312585 </p>
       <p><strong>Síguenos en nuestras redes sociales</strong></p>
     </div>
   </div>

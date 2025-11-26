@@ -1,0 +1,110 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  padding: 2rem;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 450px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.login-content {
+  padding: 2rem;
+}
+
+.login-title {
+  color: var(--cafe-oscuro);
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.login-subtitle {
+  color: var(--cafe-oscuro);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-label {
+  color: var(--cafe-oscuro);
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.form-input {
+  width: 100%;
+}
+
+.form-input.ng-invalid.ng-touched {
+  border-color: #e24c4c;
+}
+
+.error-message {
+  color: #e24c4c;
+  font-size: 0.85rem;
+}
+
+.error-container {
+  margin-top: 0.5rem;
+}
+
+.login-button {
+  width: 100%;
+  background-color: var(--cafe-oscuro) !important;
+  border-color: var(--cafe-oscuro) !important;
+  color: white !important;
+  padding: 0.75rem;
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+.login-button:hover:not(:disabled) {
+  background-color: var(--cafe-claro) !important;
+  border-color: var(--cafe-claro) !important;
+}
+
+.login-footer {
+  margin-top: 1.5rem;
+  text-align: center;
+  color: var(--cafe-oscuro);
+}
+
+.login-footer .link {
+  color: var(--verde-tropical);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login-footer .link:hover {
+  text-decoration: underline;
+}
+
+.demo-credentials {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: var(--gris-claro);
+  border-radius: 4px;
+  font-size: 0.85rem;
+  color: var(--cafe-oscuro);
+  line-height: 1.6;
+}
+

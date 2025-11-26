@@ -1,0 +1,87 @@
+.admin-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.admin-title {
+  color: var(--cafe-oscuro);
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.admin-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.admin-link {
+  color: var(--verde-tropical);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.admin-link:hover {
+  text-decoration: underline;
+}
+
+.user-info {
+  color: var(--cafe-oscuro);
+  font-weight: bold;
+}
+
+.admin-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.table-container {
+  padding: 1rem;
+}
+
+.text-center {
+  text-align: center;
+  padding: 2rem;
+  color: var(--cafe-oscuro);
+}
+
+.dialog-content {
+  padding: 1rem 0;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  color: var(--cafe-oscuro);
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+::ng-deep .edit-button {
+  color: var(--verde-tropical) !important;
+}
+
+::ng-deep .logout-button {
+  border-color: var(--cafe-oscuro) !important;
+  color: var(--cafe-oscuro) !important;
+}
+
+::ng-deep .logout-button:hover {
+  background-color: var(--cafe-oscuro) !important;
+  color: white !important;
+}
+

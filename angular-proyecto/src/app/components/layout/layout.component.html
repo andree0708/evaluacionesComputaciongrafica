@@ -1,4 +1,5 @@
 <div class="layout-container">
+  <p-toast></p-toast>
   <div class="sidebar" [class.visible]="sidebarVisible">
     <div class="sidebar-content">
       <h2 style="color: white; margin-bottom: 2rem;">Menú</h2>
@@ -19,8 +20,33 @@
           </a>
         </li>
         <li>
+          <a routerLink="/contacto" (click)="sidebarVisible = false" class="menu-item">
+            <i class="pi pi-phone"></i> Contáctanos
+          </a>
+        </li>
+        <li *ngIf="!isAuthenticated()">
+          <a routerLink="/login" (click)="sidebarVisible = false" class="menu-item">
+            <i class="pi pi-sign-in"></i> Iniciar sesión
+          </a>
+        </li>
+        <li *ngIf="!isAuthenticated()">
+          <a routerLink="/register" (click)="sidebarVisible = false" class="menu-item">
+            <i class="pi pi-user-plus"></i> Crear cuenta
+          </a>
+        </li>
+        <li *ngIf="isClient()">
           <a routerLink="/reserva" (click)="sidebarVisible = false" class="menu-item">
-            <i class="pi pi-calendar"></i> Reservar
+            <i class="pi pi-calendar"></i> Mis reservas
+          </a>
+        </li>
+        <li *ngIf="isAdmin()">
+          <a routerLink="/admin" (click)="sidebarVisible = false" class="menu-item">
+            <i class="pi pi-cog"></i> Administración
+          </a>
+        </li>
+        <li *ngIf="isAuthenticated()">
+          <a (click)="logout()" class="menu-item">
+            <i class="pi pi-sign-out"></i> Cerrar Sesión
           </a>
         </li>
       </ul>
